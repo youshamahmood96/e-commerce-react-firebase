@@ -1,0 +1,13 @@
+.shop{
+    border:1px solid lightgray;
+    margin:20px 0px;
+    padding:10px;
+    border-radius:20px;
+}
+.button{
+    background-color:black;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+}
