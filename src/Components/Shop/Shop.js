@@ -37,9 +37,20 @@ const Shop = (props) => {
                 <h3>{name}</h3>
                 <p>by:{seller}</p>
                 <p>price: $ {price}</p>
-                <button onClick={location.pathname==='/'?addToBasket:removeFromBasket} className="button" >
-                {location.pathname === '/'?"Add to Cart":"Remove"}
-                </button>
+                {
+                (location.pathname === '/'||location.pathname === '/home')&&
+                (<button onClick={addToBasket} className="button" >
+                Add to Cart
+                </button>)
+                }
+                {
+                    (location.pathname === '/order-review')&&
+                    (
+                        <button onClick={removeFromBasket} className="button" >
+                        Remove
+                        </button>
+                    )
+                }
                 </Col>
             </Row>
         </Container>

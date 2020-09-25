@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { StateProvider } from './Components/StateProvider/StateProvider';
-import reducer, { initialState } from './Components/Reducer/Reducer'
+import reducer, { initialState } from './Components/Reducer/Reducer';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <React.StrictMode>
-  <StateProvider initialState={initialState} reducer={reducer}>
+  <StateProvider  initialState={initialState} reducer={reducer}>
   <App />
   </StateProvider>
   </React.StrictMode>,

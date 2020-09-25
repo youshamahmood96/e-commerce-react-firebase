@@ -33,8 +33,27 @@ const Cart = () => {
              thousandSeparator={true}
              prefix={"$"}
         />
-        <Link to={location.pathname==='/'?'/order-review':path}><button className="button"> {location.pathname==='/'?"Review Order":"Proceed to Checkout"}
-         </button></Link>
+        {
+          (location.pathname === '/'||location.pathname === '/home')&&
+          (
+            <Link to='/order-review'>{
+              basket?.length?<button className="button"> Review Order
+              </button>:<button disabled className="button"> Review Order
+              </button>
+            }</Link>
+          )
+        }
+        {
+          (location.pathname !== '/' && location.pathname !== '/home')&&
+          (
+            <Link to={path}>{
+              basket?.length?<button className="button"> Proceed To Checkout
+              </button>:<button disabled className="button"> Proceed To Checkout
+              </button>
+            }</Link>
+          )
+        }
+        
             
         </div>
     );

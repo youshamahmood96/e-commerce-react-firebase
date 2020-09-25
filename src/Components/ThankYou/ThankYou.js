@@ -28,9 +28,9 @@ const ThankYou = () => {
 
 
     },[])
-    console.log(order);
     return (
         <div>
+             <h1>Thank you For Purchasing</h1>
             {order.map(order=><OrderList order={order} ></OrderList>)}
         </div>
     );

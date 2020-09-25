@@ -19,10 +19,9 @@ import FinalOrder from './Components/FinalOrder/FinalOrder';
 import ThankYou from './Components/ThankYou/ThankYou';
 function App() {
   const [{},dispatch]= useStateValue();
-
+  const[{basket},basketDispatch] = useStateValue();
   useEffect(()=>{
     auth.onAuthStateChanged(authUser=>{
-      console.log(authUser);
       if(authUser){
         dispatch({
           type: "Set-user",
@@ -54,6 +53,7 @@ function App() {
     <Home></Home>
     </Route>
     <Route path='/order-review'>
+    <Header></Header>
     <OrderReview></OrderReview>
     </Route>
     <Route path='/inventory'>

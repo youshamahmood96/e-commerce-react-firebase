@@ -4,9 +4,9 @@ import Cart from '../Cart/Cart';
 import Shop from '../Shop/Shop';
 import { useStateValue } from '../StateProvider/StateProvider';
 
+
 const OrderReview = () => {
     const[{basket},dispatch] = useStateValue();
-    console.log(basket);
     return (
         <Container>
             <Row>

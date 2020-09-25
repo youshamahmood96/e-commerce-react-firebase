@@ -35,11 +35,12 @@ label {
 .submit-btn {
     height: 50px;
     margin-top: 30px;
-    background: #F9A51A;
+    background:black;
     font-family: Montserrat;
     text-align: center;
     border: none;
     border-radius: 10px;
+    color: white;
 }
 
 .login-page-title {

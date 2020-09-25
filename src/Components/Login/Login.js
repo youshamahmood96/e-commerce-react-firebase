@@ -104,7 +104,7 @@ const Login = () => {
                         {!haveAccount && <TextField required onBlur={handleBlur} autoComplete="off" style={{ marginTop: '33px' }} name='confirmPassword' type='password' id="standard-basic" label="Confirm Password" />}
                         {!haveAccount ? <input type="submit" value="Create an Account" className="submit-btn" /> : <input type="submit" value="Log In" className="submit-btn" />}
                     </form>
-                    <p className='about-account'>{!haveAccount ? "Already have an account?" : "Create An Account"} <span style={{ color: '#F9A51A', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setAccount(!haveAccount)}>{!haveAccount ? "Login" : "Sign Up"}</span></p>
+                    <p className='about-account'>{!haveAccount ? "Already have an account?" : "Create An Account"} <span style={{ color: 'black', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setAccount(!haveAccount)}>{!haveAccount ? "Login" : "Sign Up"}</span></p>
                 </div>
                 {user?.error && <p style={{ color: 'red', textAlign: 'center' }}>{user?.error}</p>}
                 {user?.success && <p style={{ color: 'green', textAlign: 'center' }}>{user?.success}</p>}
