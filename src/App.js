@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
@@ -13,7 +13,33 @@ import NotFound from './Components/NotFound/NotFound';
 import OrderReview from './Components/OrderReview/OrderReview';
 import Inventory from './Components/Inventory/Inventory';
 import Login from './Components/Login/Login';
+import { useStateValue } from './Components/StateProvider/StateProvider';
+import { auth } from './firebaseConfig';
+import FinalOrder from './Components/FinalOrder/FinalOrder';
+import ThankYou from './Components/ThankYou/ThankYou';
 function App() {
+  const [{},dispatch]= useStateValue();
+
+  useEffect(()=>{
+    auth.onAuthStateChanged(authUser=>{
+      console.log(authUser);
+      if(authUser){
+        dispatch({
+          type: "Set-user",
+          user: authUser
+        })
+      }
+      else{
+        dispatch({
+          type: "Set-user",
+          user:null
+        })
+      }
+      
+
+    })
+
+  },[])
   return (
     <Router>
     <div className="App">
@@ -35,6 +61,12 @@ function App() {
     </Route>
     <Route path='/login'>
     <Login></Login>
+    </Route>
+    <Route path='/final-order'>
+    <FinalOrder></FinalOrder>     
+    </Route>
+    <Route path='/thank-you'>
+    <ThankYou></ThankYou>
     </Route>
     <Route path='*'>
     <NotFound></NotFound>

@@ -7,8 +7,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 
 const Cart = () => {
-    const[{basket},dispatch] = useStateValue();
+    const[{basket},baskeDispatch] = useStateValue();
     const location = useLocation();
+    const[{user},dispatch] = useStateValue();
+    let path;
+    user?.email?path='/final-order':path='/login'
     return (
         <div className="cart" >
         <CurrencyFormat 
@@ -30,7 +33,7 @@ const Cart = () => {
              thousandSeparator={true}
              prefix={"$"}
         />
-        <Link to={location.pathname==='/'?'/order-review':'/'}><button className="button"> {location.pathname==='/'?"Review Order":"Proceed to Checkout"}
+        <Link to={location.pathname==='/'?'/order-review':path}><button className="button"> {location.pathname==='/'?"Review Order":"Proceed to Checkout"}
          </button></Link>
             
         </div>
