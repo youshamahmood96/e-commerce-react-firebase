@@ -24,7 +24,6 @@ export const CategoryContext = createContext()
 function App(props) {
   const [category,setCategory] = useState('')
   const [{},dispatch]= useStateValue();
-  const[{basket},basketDispatch] = useStateValue();
   useEffect(()=>{
     auth.onAuthStateChanged(authUser=>{
       if(authUser){
