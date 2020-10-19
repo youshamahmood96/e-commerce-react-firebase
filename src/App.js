@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
@@ -17,7 +17,12 @@ import { useStateValue } from './Components/StateProvider/StateProvider';
 import { auth } from './firebaseConfig';
 import FinalOrder from './Components/FinalOrder/FinalOrder';
 import ThankYou from './Components/ThankYou/ThankYou';
-function App() {
+import Cart from './Components/Cart/Cart';
+
+export const CategoryContext = createContext()
+
+function App(props) {
+  const [category,setCategory] = useState('')
   const [{},dispatch]= useStateValue();
   const[{basket},basketDispatch] = useStateValue();
   useEffect(()=>{
@@ -42,6 +47,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+    <CategoryContext.Provider value ={[category,setCategory]}>
     
     <Switch>
     <Route exact path='/'>
@@ -62,6 +68,9 @@ function App() {
     <Route path='/login'>
     <Login></Login>
     </Route>
+    <Route path='/cart'>
+    <Cart></Cart>
+    </Route>
     <Route path='/final-order'>
     <FinalOrder></FinalOrder>     
     </Route>
@@ -72,7 +81,7 @@ function App() {
     <NotFound></NotFound>
     </Route>
     </Switch>
-
+    </CategoryContext.Provider>
     </div>
     </Router>
   );

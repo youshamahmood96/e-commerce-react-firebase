@@ -1,0 +1,16 @@
+.products{
+    margin-left:240px !important;
+    margin-top:20px !important;
+}
+@media screen and (max-width:960px){
+    .products{
+        margin-left:20px !important;
+        margin-top:20px !important;
+    }
+}
+@media screen and (max-width:768px){
+    .products{
+        margin-left:0px !important;
+        margin-top:20px !important;
+    }
+}

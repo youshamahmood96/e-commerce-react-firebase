@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
 import { useStateValue } from '../StateProvider/StateProvider';
 import './Header.css'
+import Navigation from './Navigation';
 
 const Header = () => {
   const[{user},dispatch] = useStateValue();
@@ -15,7 +16,7 @@ const Header = () => {
   }
     return (
         <Navbar bg="light" expand="lg">
-        <Navbar.Brand><Link className="router-link" to='/home'>E-Commerce</Link></Navbar.Brand>
+        <Navigation></Navigation>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

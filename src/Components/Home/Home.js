@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { Sticky, StickyContainer } from 'react-sticky';
+import { CategoryContext } from '../../App';
 import fakeData from '../../fakeData'
 import Cart from '../Cart/Cart';
 import Shop from '../Shop/Shop';
+import './Home.css'
 const Home = () => {
-    const data = fakeData.slice(0,10)
-    console.log(data);
+    const [category,setCategory] = useContext(CategoryContext)
+    const fdata = fakeData.slice(0,10)
+    const data = fdata.filter(data=>data.category===category)
     return (
-        <Container>
-            <Row>
-                <Col sm={9}>
-                {
-                    data.map(data=><Shop data={data} ></Shop> )
-                }
-                </Col>
-                <Col sm={3}><Cart></Cart></Col>
-            </Row>
-        </Container>
+        <Container className="products">
+        <Row>
+            <Col>
+            {  (category==='' || category === 'All Items')?
+               fdata.map(data=><Shop data={data} key={data.key} ></Shop> )
+               :
+               data.map(data=><Shop data={data} key={data.key} ></Shop> )
+            }
+            </Col>
+        </Row>
+       </Container>
+        
     );
 };
 
