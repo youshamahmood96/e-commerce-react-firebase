@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +15,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import fakeData from '../../fakeData';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { CategoryContext } from '../../App';
+import './Navigation.css'
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 const data = fakeData.slice(0,10)
 
@@ -29,11 +31,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appBar: {
-    backgroundColor:'#0054db',
-    [theme.breakpoints.up('sm')]: {
+    backgroundColor:'lightgray',
+    color: 'black',
+    height:'60px',
+    [theme.breakpoints.up('md')]: {
       width:'100%',
-      zIndex:'100',
-      height:'60px'
+      
     },
   },
   menuButton: {
@@ -43,11 +46,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
+  toolbar: {
+    ...theme.mixins.toolbar,
+  },
   drawerPaper: {
     width: drawerWidth,
     marginTop:'60px',
-    paddingTop:'-50px'
+    [theme.breakpoints.up('md')]: {
+      background:'none !important',
+    },
+    
   },
   content: {
     flexGrow: 1,
@@ -72,9 +80,9 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <List>
+      <List className="all-items" >
         <ListItem>
-          <ListItemText onClick={()=>handleClick('All Items')} primary='All Items' ></ListItemText>
+          <ListItemText  onClick={()=>handleClick('All Items')} primary='All Items' ></ListItemText>
           <ListItemIcon> <ArrowForwardIosIcon style={{color: '#0054db'}} /> </ListItemIcon>
         </ListItem>
       </List>
@@ -88,9 +96,8 @@ function ResponsiveDrawer(props) {
       </List>
     </div>
   );
-
   const container = window !== undefined ? () => window().document.body : undefined;
-
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -105,15 +112,18 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Link to ='/'>
+          <Typography style={{color: '#0054db'}} variant="h6" noWrap>
             Logo 
           </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden mdUp implementation="css">
           <Drawer
+            
             container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
