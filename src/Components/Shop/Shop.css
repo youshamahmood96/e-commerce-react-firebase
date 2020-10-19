@@ -1,8 +1,18 @@
+.shop-holder{
+    display:inline;
+    margin-top:20px;
+}
 .shop{
+    display:inline-block;
     border:1px solid lightgray;
-    margin:20px 0px;
+    margin:20px 20px;
     padding:10px;
     border-radius:20px;
+    width:280px;
+    height:320px;
+}
+.shop p{
+    color:#0054db
 }
 .button{
     background-color:black;

@@ -4,19 +4,17 @@ import './Shop.css'
 
 const Shop = (props) => {
     const {name,price,seller,img,key} = props.data;
+    function truncate(str,n){
+        return str?.length>n?str.substr(0,n-1)+'...':str;
+    }
     return (
-        <Container className="shop">
-            <Row>
-                <Col sm={2}>
-                <img className="img-fluid" src={img} alt="product"></img>
-                </Col>
-                <Col sm={10}>
-                <h3>{name}</h3>
-                <p>by:{seller}</p>
-                <p>price: $ {price}</p>
-                </Col>
-            </Row>
-        </Container>
+        <div className="shop-holder">
+        <div className="shop">
+        <img className="img-fluid" src={img} alt="product"></img>
+        <h5>{truncate(name,20)}</h5>
+        <p> $ {price}</p>
+        </div>
+        </div>
     );
 };
 
